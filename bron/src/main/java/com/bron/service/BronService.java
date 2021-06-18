@@ -101,7 +101,9 @@ public interface BronService {
 	
 	/* Venta */
 	List<Venta> listarVenta();
-
+	
+	List<Venta> getListaVentaporIdCliente(int id);
+	
 	Venta listarIdVenta(int id);
 
 	Venta addVenta(Venta u);
@@ -115,6 +117,8 @@ public interface BronService {
 	List<DetalleVenta> listarDetalleVenta();
 	
 	List<DetalleVenta> getListaporIdVenta(int id);
+	
+	List<DetalleVenta> getListaDetalleVentaporIdProducto(int id);
 
 	DetalleVenta listarIdDetalleVenta(int id);
 

@@ -358,6 +358,18 @@ public class BronServiceImpl implements BronService{
 	}
 	
 	@Override
+	public List<Venta> getListaVentaporIdCliente(int id) {
+		List<Venta> lista = ventaRepository.findAll();
+		List<Venta> resultado = new ArrayList<Venta>();
+		for(Venta v : lista) {
+			if(v.getCliente().getId_cliente() == id) {
+				resultado.add(v);
+			}
+		}
+		return resultado;
+	}
+	
+	@Override
 	public Venta addVenta(Venta u) {
 		return ventaRepository.save(u);
 	}
@@ -393,6 +405,18 @@ public class BronServiceImpl implements BronService{
 		List<DetalleVenta> resultado = new ArrayList<DetalleVenta>();
 		for(DetalleVenta v : lista) {
 			if(v.getVenta().getId_venta() == id) {
+				resultado.add(v);
+			}
+		}
+		return resultado;
+	}
+	
+	@Override
+	public List<DetalleVenta> getListaDetalleVentaporIdProducto(int id) {
+		List<DetalleVenta> lista = detalleVentaRepository.findAll();
+		List<DetalleVenta> resultado = new ArrayList<DetalleVenta>();
+		for(DetalleVenta v : lista) {
+			if(v.getAsignaProductoTienda().getDetalleProducto().getProducto().getId_producto() == id) {
 				resultado.add(v);
 			}
 		}
